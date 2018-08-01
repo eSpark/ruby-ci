@@ -8,7 +8,7 @@ RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
       && apt-get install -y google-chrome-stable \
       && rm -rf /var/lib/apt/lists/*
 
-## Install qt, mysql-client, and postgresql-client
+## Install qt, xvfb, mysql-client, and postgresql-client
 
 RUN printf "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
   && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
@@ -17,7 +17,7 @@ RUN printf "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /et
           cron graphviz imagemagick less \
           gcc g++ make \
           postgresql-client-9.6 mysql-client \
-          qt5-default libqt5webkit5-dev \
+          qt5-default libqt5webkit5-dev xvfb \
           ruby-dev zlib1g-dev \
   && rm -rf /var/lib/apt/lists/*
 
