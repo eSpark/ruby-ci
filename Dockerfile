@@ -17,7 +17,7 @@ RUN printf "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /et
           cron graphviz imagemagick less \
           gcc g++ make \
           postgresql-client-9.6 mysql-client \
-          qt5-default libqt5webkit5-dev xvfb \
+          qt5-default libqt5webkit5-dev xvfb xauth \
           ruby-dev zlib1g-dev \
   && rm -rf /var/lib/apt/lists/*
 
