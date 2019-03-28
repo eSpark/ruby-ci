@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.3.7-jessie-node-browsers
+FROM circleci/ruby:2.3.8-stretch-node-browsers
 
 # Install qt 4.8.X (for capybara-webkit gem) and also
 # postgresql-client and mysql-client
