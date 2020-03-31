@@ -2,9 +2,9 @@
 
 [Docker Hub](https://hub.docker.com/r/esparklearning/ruby-ci/)
 
-Based on a CircleCI image, but adds qt 4.
+Based on a CircleCI image, but adds QT4 and FFPMEG and nodejs/yarn.
 
-Current Image: `esparklearning/ruby-ci:2.5.3-node-browsers-legacy`
+Current Image: `esparklearning/ruby-ci:2.6.3`
 
 To build a new image:
 
@@ -13,4 +13,4 @@ the Dockerfile accordingly and, once it builds, run:
 
 1. `docker build -t ${VERSION} .`
 2. `docker tag ${VERSION} esparklearning/ruby-ci/${VERSION}`
-3. `docker push docker push esparklearning/ruby-ci:${VERSION}`
+3. `docker push esparklearning/ruby-ci:${VERSION}`
