@@ -3,9 +3,9 @@ FROM circleci/ruby:2.6.3-node-browsers-legacy
 # Install qt 4.8.X (for capybara-webkit gem) and also
 # postgresql-client and mysql-client for databases
 # and node/yarn for Webpacker
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
-  && curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - \
   && sudo apt-get update \
   && sudo apt-get install -y \
     gcc g++ make \
