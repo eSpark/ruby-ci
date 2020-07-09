@@ -19,4 +19,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - \
     phantomjs \
   && sudo rm -rf /var/lib/apt/lists/*
 
+# the base image comes with an older version of Node that takes precedence given the path
+RUN sudo rm /usr/local/bin/node
+
 WORKDIR /home/circleci
