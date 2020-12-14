@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.6.3-node-browsers-legacy
+FROM circleci/ruby:2.6.6-node-browsers-legacy
 
 # Install qt 4.8.X (for capybara-webkit gem) and also
 # postgresql-client and mysql-client for databases
