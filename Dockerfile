@@ -1,4 +1,4 @@
-FROM cimg/ruby:2.7-browsers
+FROM cimg/ruby:3.0-browsers
 
 # Install mysql-client for databases
 # and node/yarn for Webpacker
