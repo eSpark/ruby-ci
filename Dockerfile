@@ -1,8 +1,8 @@
-FROM cimg/ruby:3.1-browsers
+FROM cimg/ruby:3.1.3-browsers
 
 # Install mysql-client for databases
 # and node/yarn for Webpacker
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && sudo apt-get update \
