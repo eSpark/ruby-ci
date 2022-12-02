@@ -5,6 +5,7 @@ FROM cimg/ruby:3.1.3-browsers
 RUN sudo rm /usr/local/bin/node \
   && curl -sL https://deb.nodesource.com/setup_16.x | sudo bash - \
   && sudo apt-get install -y \
+    google-chrome-stable \
     nodejs \
     default-mysql-client \
   && sudo rm -rf /var/lib/apt/lists/*
