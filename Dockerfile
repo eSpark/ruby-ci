@@ -7,6 +7,7 @@ RUN sudo rm /usr/local/bin/node \
   && sudo apt-get install -y \
     google-chrome-stable \
     default-mysql-client \
+    nodejs \
   && sudo rm -rf /var/lib/apt/lists/* \
   # install phantomjs
   && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
