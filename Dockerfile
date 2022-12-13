@@ -13,6 +13,6 @@ RUN sudo rm /usr/local/bin/node \
   && tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
   && sudo mv phantomjs-2.1.1-linux-x86_64 /usr/local/share \
   && sudo ln -sf /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin \
-  && rm -r bin
+  && rm phantomjs-2.1.1-linux-x86_64.tar.bz2
 
 WORKDIR /home/circleci
