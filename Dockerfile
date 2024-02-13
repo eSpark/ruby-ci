@@ -2,8 +2,8 @@ FROM cimg/ruby:3.2.2-browsers
 
 # install nodejs
 USER root
-ENV NODE_VERSION=16.16.0
-RUN rm -rf /usr/local/bin/node /usr/local/bin/nodejs
+ENV NODE_VERSION=20.11.0
+RUN rm -rf /usr/local/bin/nodejs
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
@@ -14,6 +14,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     i386) ARCH='x86';; \
     *) echo "unsupported architecture"; exit 1 ;; \
   esac \
+  # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+  && export GNUPGHOME="$(mktemp -d)" \
   # gpg keys listed at https://github.com/nodejs/node#release-keys
   && set -ex \
   && for key in \
@@ -27,6 +29,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
     C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
     108F52B48DB57BB0CC439B2997B01419BD92F80A \
+    A363A499291CBBC940DD62E41F10027AF002F8B0 \
   ; do \
       gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
       gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" ; \
@@ -34,6 +37,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
   && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
   && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+  && gpgconf --kill all \
+  && rm -rf "$GNUPGHOME" \
   && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
