@@ -52,6 +52,7 @@ RUN apt-get update \
   && apt-get install -y \
     default-mysql-client \
     ffmpeg \
+    libvips-tools \
     google-chrome-stable \
   && rm -rf /var/lib/apt/lists/*
 
