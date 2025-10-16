@@ -1,4 +1,4 @@
-FROM cimg/ruby:3.4.4-browsers
+FROM cimg/ruby:3.4.7-browsers
 
 # install nodejs
 USER root
