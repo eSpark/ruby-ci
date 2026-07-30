@@ -14,6 +14,8 @@ RUN  set -eux; \
   ln -sf /usr/local/bin/node /usr/local/bin/nodejs; \
   npm install -g corepack@latest; \
   corepack enable
+# debug
+RUN node --version && ruby --version
 
 # install/update other tools
 RUN apt-get update \
